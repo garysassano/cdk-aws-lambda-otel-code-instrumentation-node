@@ -91,6 +91,10 @@
       "type": "runtime"
     },
     {
+      "name": "@opentelemetry/resource-detector-aws",
+      "type": "runtime"
+    },
+    {
       "name": "@opentelemetry/resources",
       "type": "runtime"
     },
