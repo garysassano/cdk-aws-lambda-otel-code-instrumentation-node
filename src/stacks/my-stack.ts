@@ -59,22 +59,22 @@ export class MyStack extends Stack {
       },
     });
 
-    new NodejsFunction(this, "OtelV2HelloLambda", {
-      functionName: "otel-v2-hello-lambda",
-      entry: join(__dirname, "../functions/otel-hello", "index.ts"),
+    new NodejsFunction(this, "OtelV2Lambda", {
+      functionName: "otel-v2-lambda",
+      entry: join(__dirname, "../functions/hello", "index.ts"),
       runtime: Runtime.NODEJS_22_X,
       architecture: Architecture.ARM_64,
-      timeout: Duration.minutes(1),
-      memorySize: 1024,
+      timeout: Duration.seconds(30),
+      memorySize: 512,
       loggingFormat: LoggingFormat.JSON,
       environment: {
-        ...getOpenTelemetryEnv(env.HONEYCOMB_API_KEY, "lambda-otel-v2-traces"),
-        OTEL_SERVICE_NAME: "otel-v2-hello-lambda",
+        HONEYCOMB_API_KEY: env.HONEYCOMB_API_KEY,
+        HONEYCOMB_DATASET: "lambda-otel-v2",
+        OTEL_SERVICE_NAME: "otel-v2-lambda",
       },
       bundling: {
         minify: true,
         sourceMap: true,
-        externalModules: [],
         nodeModules: [
           "@opentelemetry/api",
           "@opentelemetry/exporter-trace-otlp-http",

@@ -1,5 +1,5 @@
 {
-  "name": "cdk-aws-lambda-otel-auto-instrumentation-node",
+  "name": "cdk-aws-lambda-otel-code-instrumentation-node",
   "scripts": {
     "build": "npx projen build",
     "bundle": "npx projen bundle",
@@ -45,6 +45,12 @@
     "zod": "^3.24.2"
   },
   "dependencies": {
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.200.0",
+    "@opentelemetry/resources": "^2.0.0",
+    "@opentelemetry/sdk-trace-base": "^2.0.0",
+    "@opentelemetry/sdk-trace-node": "^2.0.0",
+    "@opentelemetry/semantic-conventions": "^1.22.0",
     "aws-cdk-lib": "^2.187.0",
     "constructs": "^10.0.5"
   },

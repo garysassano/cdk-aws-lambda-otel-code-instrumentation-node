@@ -7,11 +7,20 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   devDeps: ["zod"],
   eslint: true,
   minNodeVersion: "22.14.0",
-  name: "cdk-aws-lambda-otel-auto-instrumentation-node",
+  name: "cdk-aws-lambda-otel-code-instrumentation-node",
   packageManager: javascript.NodePackageManager.PNPM,
   pnpmVersion: "10",
   prettier: true,
   projenrcTs: true,
+
+  deps: [
+    "@opentelemetry/api",
+    "@opentelemetry/exporter-trace-otlp-http",
+    "@opentelemetry/resources",
+    "@opentelemetry/sdk-trace-base",
+    "@opentelemetry/sdk-trace-node",
+    "@opentelemetry/semantic-conventions",
+  ],
 });
 
 project.synth();

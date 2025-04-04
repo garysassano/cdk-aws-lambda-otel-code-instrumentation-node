@@ -83,6 +83,30 @@
       "type": "build"
     },
     {
+      "name": "@opentelemetry/api",
+      "type": "runtime"
+    },
+    {
+      "name": "@opentelemetry/exporter-trace-otlp-http",
+      "type": "runtime"
+    },
+    {
+      "name": "@opentelemetry/resources",
+      "type": "runtime"
+    },
+    {
+      "name": "@opentelemetry/sdk-trace-base",
+      "type": "runtime"
+    },
+    {
+      "name": "@opentelemetry/sdk-trace-node",
+      "type": "runtime"
+    },
+    {
+      "name": "@opentelemetry/semantic-conventions",
+      "type": "runtime"
+    },
+    {
       "name": "aws-cdk-lib",
       "version": "^2.187.0",
       "type": "runtime"
