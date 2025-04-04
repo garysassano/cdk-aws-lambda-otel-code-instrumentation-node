@@ -51,6 +51,7 @@
     "@opentelemetry/sdk-trace-base": "^2.0.0",
     "@opentelemetry/sdk-trace-node": "^2.0.0",
     "@opentelemetry/semantic-conventions": "^1.22.0",
+    "@types/aws-lambda": "^8.10.148",
     "aws-cdk-lib": "^2.187.0",
     "constructs": "^10.0.5"
   },

@@ -2,6 +2,11 @@ import { trace, SpanStatusCode } from "@opentelemetry/api";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
 import { SimpleSpanProcessor } from "@opentelemetry/sdk-trace-base";
+import {
+  APIGatewayProxyEventV2,
+  APIGatewayProxyResultV2,
+  Context,
+} from "aws-lambda";
 
 // Initialize OpenTelemetry
 const provider = new NodeTracerProvider({
@@ -24,12 +29,15 @@ provider.register();
 const tracer = trace.getTracer("lambda-handler");
 
 // Lambda handler function
-export const handler = async (event: any, context: any): Promise<any> => {
+export const handler = async (
+  _event: APIGatewayProxyEventV2,
+  _context: Context,
+): Promise<APIGatewayProxyResultV2> => {
   // Use the tracer to create a span
   return tracer.startActiveSpan("lambda_handler", async (span) => {
     try {
       // Your Lambda business logic
-      const response = {
+      const response: APIGatewayProxyResultV2 = {
         statusCode: 200,
         body: JSON.stringify({ message: "Hello from Lambda!" }),
       };
@@ -43,7 +51,11 @@ export const handler = async (event: any, context: any): Promise<any> => {
       span.setStatus({ code: SpanStatusCode.ERROR });
       span.end();
 
-      throw error;
+      // Return an error response
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: "Internal Server Error" }),
+      };
     }
   });
 };

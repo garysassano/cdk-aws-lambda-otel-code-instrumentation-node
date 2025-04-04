@@ -20,6 +20,7 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     "@opentelemetry/sdk-trace-base",
     "@opentelemetry/sdk-trace-node",
     "@opentelemetry/semantic-conventions",
+    "@types/aws-lambda",
   ],
 });
 
