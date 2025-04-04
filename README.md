@@ -1,6 +1,6 @@
 # cdk-aws-lambda-otel-code-instrumentation-node
 
-CDK app showcasing OpenTelemetry [code-based instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/code-based/) for AWS Lambda functions running on the Node.js runtime.
+CDK app showcasing OpenTelemetry [code-based instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/code-based/) for AWS Lambda functions running on the Node.js runtime. Uses [OpenTelemetry JS SDK 2.x](https://opentelemetry.io/blog/2025/otel-js-sdk-2-0/).
 
 ### Related Apps
 
