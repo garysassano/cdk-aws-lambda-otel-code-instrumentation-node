@@ -1,5 +1,5 @@
 {
-  "name": "cdk-aws-lambda-otel-code-instrumentation-node",
+  "name": "cdk-aws-lambda-otel-auto-instrumentation-node",
   "scripts": {
     "build": "npx projen build",
     "bundle": "npx projen bundle",

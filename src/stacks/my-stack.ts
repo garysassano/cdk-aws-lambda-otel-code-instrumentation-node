@@ -9,6 +9,7 @@ import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import { Construct } from "constructs";
 import { join } from "path";
 import { validateEnv } from "../utils/validate-env";
+import { getOpenTelemetryEnv } from "../utils/otel-config";
 
 const env = validateEnv(["HONEYCOMB_API_KEY"]);
 
@@ -55,6 +56,33 @@ export class MyStack extends Stack {
             return [];
           },
         },
+      },
+    });
+
+    new NodejsFunction(this, "OtelV2HelloLambda", {
+      functionName: "otel-v2-hello-lambda",
+      entry: join(__dirname, "../functions/otel-hello", "index.ts"),
+      runtime: Runtime.NODEJS_22_X,
+      architecture: Architecture.ARM_64,
+      timeout: Duration.minutes(1),
+      memorySize: 1024,
+      loggingFormat: LoggingFormat.JSON,
+      environment: {
+        ...getOpenTelemetryEnv(env.HONEYCOMB_API_KEY, "lambda-otel-v2-traces"),
+        OTEL_SERVICE_NAME: "otel-v2-hello-lambda",
+      },
+      bundling: {
+        minify: true,
+        sourceMap: true,
+        externalModules: [],
+        nodeModules: [
+          "@opentelemetry/api",
+          "@opentelemetry/exporter-trace-otlp-http",
+          "@opentelemetry/resources",
+          "@opentelemetry/sdk-trace-base",
+          "@opentelemetry/sdk-trace-node",
+          "@opentelemetry/semantic-conventions",
+        ],
       },
     });
   }
