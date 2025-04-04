@@ -1,10 +1,10 @@
 # cdk-aws-lambda-otel-code-instrumentation-node
 
-CDK app showcasing OpenTelemetry [zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/) for AWS Lambda functions running on the Node.js runtime.
+CDK app showcasing OpenTelemetry [code-based instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/code-based/) for AWS Lambda functions running on the Node.js runtime.
 
 ### Related Apps
 
-- [cdk-aws-lambda-otel-code-instrumentation](https://github.com/garysassano/cdk-aws-lambda-otel-code-instrumentation) - Uses OpenTelemetry code instrumentation instead of auto.
+- [cdk-aws-lambda-otel-auto-instrumentation-node](https://github.com/garysassano/cdk-aws-lambda-otel-auto-instrumentation-node) - Uses OpenTelemetry auto instrumentation instead of code.
 
 ## Prerequisites
 
