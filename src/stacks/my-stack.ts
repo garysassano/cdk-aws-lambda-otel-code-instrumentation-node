@@ -24,16 +24,6 @@ export class MyStack extends Stack {
         HONEYCOMB_API_KEY: env.HONEYCOMB_API_KEY,
         OTEL_SERVICE_NAME: "otel-v2-lambda-service",
       },
-      bundling: {
-        minify: true,
-        sourceMap: true,
-        nodeModules: [
-          "@opentelemetry/api",
-          "@opentelemetry/exporter-trace-otlp-http",
-          "@opentelemetry/sdk-trace-base",
-          "@opentelemetry/sdk-trace-node",
-        ],
-      },
     });
   }
 }
