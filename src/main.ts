@@ -9,7 +9,7 @@ const devEnv = {
 
 const app = new App();
 
-new MyStack(app, "cdk-aws-lambda-otel-auto-instrumentation-node-dev", {
+new MyStack(app, "cdk-aws-lambda-otel-code-instrumentation-node-dev", {
   env: devEnv,
 });
 
