@@ -21,6 +21,7 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     "@opentelemetry/sdk-trace-node",
     "@opentelemetry/semantic-conventions",
     "@opentelemetry/resource-detector-aws",
+    "@opentelemetry/resource-detector-env",
     "@types/aws-lambda",
   ],
 });

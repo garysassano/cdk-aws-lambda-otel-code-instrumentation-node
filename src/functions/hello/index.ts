@@ -8,7 +8,7 @@ import {
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
 import { SimpleSpanProcessor } from "@opentelemetry/sdk-trace-base";
-import { detectResources } from "@opentelemetry/resources";
+import { detectResources, envDetector } from "@opentelemetry/resources";
 import { awsLambdaDetector } from "@opentelemetry/resource-detector-aws";
 import {
   APIGatewayProxyEventV2,
@@ -22,7 +22,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 // Initialize OpenTelemetry with proper resource detection
 const provider = new NodeTracerProvider({
   resource: detectResources({
-    detectors: [awsLambdaDetector],
+    detectors: [awsLambdaDetector, envDetector],
   }),
   spanProcessors: [
     new SimpleSpanProcessor(

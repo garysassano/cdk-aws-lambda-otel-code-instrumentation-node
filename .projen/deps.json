@@ -95,6 +95,10 @@
       "type": "runtime"
     },
     {
+      "name": "@opentelemetry/resource-detector-env",
+      "type": "runtime"
+    },
+    {
       "name": "@opentelemetry/resources",
       "type": "runtime"
     },
