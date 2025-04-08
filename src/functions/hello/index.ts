@@ -1,9 +1,4 @@
 import {
-  APIGatewayProxyEventV2,
-  APIGatewayProxyResultV2,
-  Context,
-} from "aws-lambda";
-import {
   diag,
   DiagConsoleLogger,
   DiagLogLevel,
@@ -13,9 +8,13 @@ import {
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { awsLambdaDetector } from "@opentelemetry/resource-detector-aws";
 import { detectResources, envDetector } from "@opentelemetry/resources";
-import { NodeSDK } from "@opentelemetry/sdk-node";
 import { SimpleSpanProcessor } from "@opentelemetry/sdk-trace-base";
 import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
+import {
+  APIGatewayProxyEventV2,
+  APIGatewayProxyResultV2,
+  Context,
+} from "aws-lambda";
 
 // Enable debug logging
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
