@@ -51,8 +51,7 @@ export const handler = async (
   return tracer.startActiveSpan("lambda-handler", async (span) => {
     try {
       // Add important context information
-      span.setAttribute("aws.requestId", context.awsRequestId);
-      span.setAttribute("lambda.name", context.functionName);
+      span.setAttribute("faas.invocation_id", context.awsRequestId);
 
       // Your Lambda business logic
       const response: APIGatewayProxyResultV2 = {
