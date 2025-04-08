@@ -50,7 +50,7 @@ export const handler = async (
   // Use the tracer to create a span
   return tracer.startActiveSpan("lambda-handler", async (span) => {
     try {
-      // Add Lambda context information
+      // Add Lambda context to span attributes
       span.setAttribute("faas.invocation_id", context.awsRequestId);
 
       // Your Lambda business logic
