@@ -16,12 +16,12 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   deps: [
     "@opentelemetry/api",
     "@opentelemetry/exporter-trace-otlp-http",
+    "@opentelemetry/resource-detector-aws",
     "@opentelemetry/resources",
+    "@opentelemetry/sdk-node",
     "@opentelemetry/sdk-trace-base",
     "@opentelemetry/sdk-trace-node",
     "@opentelemetry/semantic-conventions",
-    "@opentelemetry/resource-detector-aws",
-    "@opentelemetry/resource-detector-env",
     "@types/aws-lambda",
   ],
 });

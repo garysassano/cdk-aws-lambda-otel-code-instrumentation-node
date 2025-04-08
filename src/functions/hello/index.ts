@@ -1,20 +1,21 @@
 import {
-  trace,
-  SpanStatusCode,
-  diag,
-  DiagLogLevel,
-  DiagConsoleLogger,
-} from "@opentelemetry/api";
-import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
-import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
-import { SimpleSpanProcessor } from "@opentelemetry/sdk-trace-base";
-import { detectResources, envDetector } from "@opentelemetry/resources";
-import { awsLambdaDetector } from "@opentelemetry/resource-detector-aws";
-import {
   APIGatewayProxyEventV2,
   APIGatewayProxyResultV2,
   Context,
 } from "aws-lambda";
+import {
+  diag,
+  DiagConsoleLogger,
+  DiagLogLevel,
+  SpanStatusCode,
+  trace,
+} from "@opentelemetry/api";
+import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
+import { awsLambdaDetector } from "@opentelemetry/resource-detector-aws";
+import { detectResources, envDetector } from "@opentelemetry/resources";
+import { NodeSDK } from "@opentelemetry/sdk-node";
+import { SimpleSpanProcessor } from "@opentelemetry/sdk-trace-base";
+import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
 
 // Enable debug logging
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
