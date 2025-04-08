@@ -19,14 +19,11 @@ import {
 // Enable debug logging
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 
-// Detect resources including AWS Lambda environment
-const resources = detectResources({
-  detectors: [awsLambdaDetector],
-});
-
 // Initialize OpenTelemetry with proper resource detection
 const provider = new NodeTracerProvider({
-  resource: resources,
+  resource: detectResources({
+    detectors: [awsLambdaDetector],
+  }),
   spanProcessors: [
     new SimpleSpanProcessor(
       new OTLPTraceExporter({
@@ -43,15 +40,15 @@ const provider = new NodeTracerProvider({
 provider.register();
 
 // Get a tracer
-const tracer = trace.getTracer("lambda-handler");
+const tracer = trace.getTracer("lambda-tracer");
 
 // Lambda handler function
 export const handler = async (
-  event: APIGatewayProxyEventV2,
+  _event: APIGatewayProxyEventV2,
   context: Context,
 ): Promise<APIGatewayProxyResultV2> => {
   // Use the tracer to create a span
-  return tracer.startActiveSpan("lambda_handler", async (span) => {
+  return tracer.startActiveSpan("lambda-handler", async (span) => {
     try {
       // Add important context information
       span.setAttribute("aws.requestId", context.awsRequestId);
